@@ -1,0 +1,3 @@
+[submodule "PlayGithub.wiki"]
+	path = PlayGithub.wiki
+	url = git@github.com:ali50m/PlayGithub.wiki.git
