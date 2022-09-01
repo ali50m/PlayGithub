@@ -10,10 +10,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-
-env:
-  GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -24,6 +20,8 @@ jobs:
         # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}env:
         shell: bash
         working-directory: ./out
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload "manual-release" hello
           # echo ${{ github.token }} | gh auth login --with-token
