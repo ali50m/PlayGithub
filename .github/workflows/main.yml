@@ -30,8 +30,16 @@ jobs:
         run: |
           gh release create ${{github.ref_name}}
           # echo ${{ github.token }} | gh auth login --with-token
-          for filename in ./* ; do
+          # for filename in ./* ; do
+          #   [ -e "$filename" ] || continue
+          #   echo "Processing $filename ..."
+          #   gh release upload ${{github.ref_name}} $filename
+          # done
+
+          for filename in $(find . -print)
+          do
             [ -e "$filename" ] || continue
             echo "Processing $filename ..."
             gh release upload ${{github.ref_name}} $filename
           done
+
