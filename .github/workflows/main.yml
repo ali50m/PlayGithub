@@ -29,6 +29,6 @@ jobs:
           for filename in ./* ; do
             [ -e "$filename" ] || continue
             echo "Processing $filename ..."
-            gh release upload "manual-release" $filename
+            gh release upload "manual-release-2" $filename
             # gh release upload ${{ github.event.release.tag_name}} $filename
           done
