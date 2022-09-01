@@ -17,7 +17,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: upload artifacts
-        # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
+        # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         working-directory: ./out
         run: |
