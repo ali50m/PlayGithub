@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Run a one-line script
         # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
         shell: bash
@@ -27,3 +27,4 @@ jobs:
             echo "Processing $filename ..."
             gh release upload test $filename
             # gh release upload ${{ github.event.release.tag_name}} $filename
+          done
