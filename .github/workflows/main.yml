@@ -39,6 +39,7 @@ jobs:
           for filename in $(find . -print)
           do
             [ -e "$filename" ] || continue
+            [ -f "$filename" ] || continue
             echo "Processing $filename ..."
             gh release upload ${{github.ref_name}} $filename
           done
