@@ -1,0 +1,27 @@
+name: '[Release] On Publish'
+
+on:
+  # push:
+  #   branches:
+  #     - "**" # matches every branch
+  # pull_request:
+  #   branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
+        shell: bash
+        working-directory: ./out
+        run: |
+          echo ${{ github.token }} | gh auth login --with-token
+          for filename in ./* ; do
+            [ -e "$filename" ] || continue
+            echo "Processing $filename ..."
+            gh release upload test $filename
+            # gh release upload ${{ github.event.release.tag_name}} $filename
