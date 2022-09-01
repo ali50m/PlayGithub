@@ -26,5 +26,5 @@ jobs:
             [ -e "$filename" ] || continue
             echo "Processing $filename ..."
             gh release upload test $filename
-            # gh release upload ${{ github.event.release.tag_name}} $filename
+            # gh release upload --repo ${{ github.repository }} ${{ github.event.release.tag_name}} $filename
           done
