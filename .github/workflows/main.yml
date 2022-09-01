@@ -16,15 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run a one-line script
+      - name: upload artifacts
         # if: ${{ github.event_name == 'release' && github.event.action == 'publish' }}
         shell: bash
         working-directory: ./out
         run: |
-          echo ${{ github.token }} | gh auth login --with-token
-          for filename in ./* ; do
-            [ -e "$filename" ] || continue
-            echo "Processing $filename ..."
-            gh release upload --repo ${{ github.repository }} test $filename
-            # gh release upload ${{ github.event.release.tag_name}} $filename
-          done
+          gh release upload "manual-release" hello
+          # echo ${{ github.token }} | gh auth login --with-token
+          # for filename in ./* ; do
+          #   [ -e "$filename" ] || continue
+          #   echo "Processing $filename ..."
+          #   gh release upload --repo ${{ github.repository }} test $filename
+          #   # gh release upload ${{ github.event.release.tag_name}} $filename
+          # done
