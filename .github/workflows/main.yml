@@ -23,12 +23,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "manual-release" hello
+          # gh release create "manual-release" hello
           # gh release upload "manual-release" hello
           # echo ${{ github.token }} | gh auth login --with-token
-          # for filename in ./* ; do
-          #   [ -e "$filename" ] || continue
-          #   echo "Processing $filename ..."
-          #   gh release upload --repo ${{ github.repository }} test $filename
-          #   # gh release upload ${{ github.event.release.tag_name}} $filename
-          # done
+          for filename in ./* ; do
+            [ -e "$filename" ] || continue
+            echo "Processing $filename ..."
+            gh release upload "manual-release" $filename
+            # gh release upload ${{ github.event.release.tag_name}} $filename
+          done
