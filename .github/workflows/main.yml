@@ -23,6 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          gh release create "manual-release-2"
           # gh release create "manual-release" hello
           # gh release upload "manual-release" hello
           # echo ${{ github.token }} | gh auth login --with-token
